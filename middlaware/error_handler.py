@@ -1,10 +1,11 @@
 from fastapi import FastAPI, Request, Response
 from fastapi.responses import HTMLResponse, JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
+from typing import Union
 class Errorhandler(BaseHTTPMiddleware):
     def __init__(self,app:FastAPI) -> None:
         super().__init__(app)
-    async def dispatch(self,request:Request,call_next)->Response | JSONResponse:
+    async def dispatch(self,request:Request,call_next)->Union[Response, JSONResponse]:
         try:
             return await call_next(request)
         except Exception as e:
