@@ -5,11 +5,11 @@ class User(BaseModel):
     password:str
 class Movie(BaseModel):
     id: int = 0
-    title:str | None=Field(max_length=30,min_length=5)
-    overview:str | None=Field(max_length=50,min_length=5)
-    year:int | None=Field(le=2023, default=2023)
-    rating:float | None=Field(gt=1,le=10,default=1)
-    category:str | None=Field(max_length=15,min_length=5)
+    title:str=Field(max_length=30,min_length=5)
+    overview:str=Field(max_length=50,min_length=5)
+    year:int=Field(le=2023, default=2023)
+    rating:float=Field(gt=1,le=10,default=1)
+    category:str=Field(max_length=15,min_length=5)
     class Config:
         schema_extra={
             "example":{
